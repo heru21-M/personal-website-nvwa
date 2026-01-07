@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import resumePhoto from '@/assets/resume-photo.jpg';
 
 /**
  * 关于我页面
@@ -19,7 +20,7 @@ function About() {
               平面设计
             </Link>
             <Link to="/video" className="text-sm hover:text-gray-600 transition-colors">
-              视频
+              视频动画
             </Link>
             <Link to="/experience" className="text-sm hover:text-gray-600 transition-colors">
               工作经历
@@ -56,11 +57,27 @@ function About() {
             <p className="text-lg text-gray-500 mt-2">
               14年设计经验
             </p>
+
+            {/* 联系方式 */}
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href="mailto:zangfeiyu21@126.com"
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-black text-gray-700 hover:bg-black hover:text-white transition-colors"
+              >
+                zangfeiyu21@126.com
+              </a>
+              <a
+                href="tel:18721183215"
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-black text-gray-700 hover:bg-black hover:text-white transition-colors"
+              >
+                18721183215
+              </a>
+            </div>
           </div>
 
           {/* 个人简介 */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16 items-center">
+            <div className="lg:col-span-2">
               <h2 className="text-2xl font-bold mb-6">个人简介</h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
@@ -77,8 +94,12 @@ function About() {
               </div>
             </div>
 
-            <div className="bg-gray-100 aspect-[4/5] flex items-center justify-center">
-              <span className="text-8xl font-bold text-gray-300">照片</span>
+            <div className="bg-gray-100 aspect-[3/4] w-1/3 mx-auto lg:mx-0 lg:w-full flex items-center justify-center overflow-hidden">
+              <img
+                src={resumePhoto}
+                alt="臧秀娟"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
@@ -113,25 +134,6 @@ function About() {
               "能适应不同行业设计风格,擅长理解策划文案,与开发团队有效配合。"
             </h2>
             <p className="text-gray-400 text-lg">— 工作理念</p>
-          </div>
-
-          {/* 联系方式 */}
-          <div className="mt-16">
-            <h2 className="text-2xl font-bold mb-8">联系方式</h2>
-            <div className="flex flex-wrap gap-6">
-              <a
-                href="mailto:zangfeiyu21@126.com"
-                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-black hover:bg-black hover:text-white transition-colors"
-              >
-                zangfeiyu21@126.com
-              </a>
-              <a
-                href="tel:18721183215"
-                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-black hover:bg-black hover:text-white transition-colors"
-              >
-                18721183215
-              </a>
-            </div>
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Play } from 'lucide-react';
+import { useRef } from 'react';
 import heroImage from '@/assets/hero-image.png';
 import ipNewImage from '@/assets/ip-new.png';
 import ipNew2Image from '@/assets/ip-new2.png';
@@ -15,6 +16,7 @@ import uiDesign2Image from '@/assets/ui-design-2.png';
  * 4. 关于我
  */
 function Home() {
+  const videoRefs = useRef<{ [key: number]: HTMLVideoElement }>({});
   const graphicProjects = [
     {
       id: 1,
@@ -57,20 +59,22 @@ function Home() {
   const videoProjects = [
     {
       id: 1,
-      title: '品牌动态标识',
-      client: '科技公司品牌',
-      category: '动态图形',
+      title: '理财互动游戏视频1',
+      client: '',
+      category: '',
       year: '2024',
-      duration: '0:30',
+      duration: '1:30',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/db94683e9a0e4246996664850a878bac.mp4',
       gradient: 'from-gray-700 to-gray-900'
     },
     {
       id: 2,
-      title: '产品宣传片',
-      client: '消费电子品牌',
-      category: '视频剪辑',
+      title: '理财互动游戏视频2',
+      client: '',
+      category: '',
       year: '2024',
-      duration: '2:15',
+      duration: '1:30',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/2d4ca9e442634d8c8427368395d89f18.mp4',
       gradient: 'from-gray-600 to-gray-800'
     }
   ];
@@ -79,7 +83,7 @@ function Home() {
     {
       company: '上海壮诚体育器材有限公司',
       position: '设计',
-      period: '2024.10 - 至今',
+      period: '2024.10 - 2025.12',
       description: '负责日常视觉设计、电商平台产品主图和详情页设计、业务对接等工作。'
     },
     {
@@ -217,19 +221,51 @@ function Home() {
                   to="/video"
                   className="relative block bg-gray-100 aspect-video overflow-hidden mb-4"
                 >
-                  <div className={`w-full h-full bg-gradient-to-br ${video.gradient} group-hover:scale-105 transition-transform duration-500 flex items-center justify-center`}>
-                    <span className="text-6xl font-bold text-white/30">{video.id.toString().padStart(2, '0')}</span>
-                  </div>
-                  {/* 播放按钮 */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                      <Play className="w-6 h-6 text-black ml-1" fill="black" />
+                  {video.videoUrl ? (
+                    <video
+                      ref={(el) => {
+                        if (el) {
+                          videoRefs.current[video.id] = el;
+                          // 为第一个视频设置预览时间为第60秒
+                          if (video.id === 1) {
+                            el.currentTime = 60;
+                            // 确保视频停留在第60秒作为预览
+                            el.addEventListener('loadedmetadata', () => {
+                              el.currentTime = 60;
+                            }, { once: true });
+                          }
+                          // 为第二个视频设置预览时间为第1分43秒
+                          if (video.id === 2) {
+                            el.currentTime = 103;
+                            // 确保视频停留在第1分43秒作为预览
+                            el.addEventListener('loadedmetadata', () => {
+                              el.currentTime = 103;
+                            }, { once: true });
+                          }
+                        }
+                      }}
+                      src={video.videoUrl}
+                      className="w-full h-full object-cover"
+                      preload="metadata"
+                    />
+                  ) : (
+                    <>
+                      <div className={`w-full h-full bg-gradient-to-br ${video.gradient} group-hover:scale-105 transition-transform duration-500 flex items-center justify-center`}>
+                        <span className="text-6xl font-bold text-white/30">{video.id.toString().padStart(2, '0')}</span>
+                      </div>
+                      {/* 播放按钮 */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                          <Play className="w-6 h-6 text-black ml-1" fill="black" />
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  {!video.videoUrl && (
+                    <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/80 text-white text-xs">
+                      {video.duration}
                     </div>
-                  </div>
-                  {/* 时长 */}
-                  <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/80 text-white text-xs">
-                    {video.duration}
-                  </div>
+                  )}
                 </Link>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between">
@@ -238,8 +274,8 @@ function Home() {
                     </h3>
                     <span className="text-sm text-gray-500">{video.year}</span>
                   </div>
-                  <p className="text-gray-600">{video.client}</p>
-                  <p className="text-sm text-gray-500">{video.category}</p>
+                  {video.client && <p className="text-gray-600">{video.client}</p>}
+                  {video.category && <p className="text-sm text-gray-500">{video.category}</p>}
                 </div>
               </div>
             ))}

@@ -154,7 +154,7 @@ function GraphicDesign() {
               平面设计
             </Link>
             <Link to="/video" className="text-sm hover:text-gray-600 transition-colors">
-              视频
+              视频动画
             </Link>
             <Link to="/experience" className="text-sm hover:text-gray-600 transition-colors">
               工作经历

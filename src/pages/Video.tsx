@@ -1,71 +1,102 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Mail, Instagram, Linkedin, Play } from 'lucide-react';
+import { useRef, useEffect } from 'react';
 
 /**
  * 视频作品展示页面
  * 展示动态图形、视频剪辑、视觉特效等视频作品
  */
 function Video() {
+  const videoRefs = useRef<{ [key: number]: HTMLVideoElement }>({});
+
   const videos = [
     {
       id: 1,
-      title: '品牌动态标识',
-      client: '科技公司品牌',
-      category: '动态图形',
+      title: '理财互动游戏视频1',
+      client: '金融机构',
+      category: '互动游戏',
       year: '2024',
-      duration: '0:30',
-      description: '为科技公司品牌设计动态Logo和品牌动画,展现品牌的创新精神和科技感。',
+      duration: '1:30',
+      description: '',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/db94683e9a0e4246996664850a878bac.mp4',
       gradient: 'from-gray-700 to-gray-900'
     },
     {
       id: 2,
-      title: '产品宣传片',
-      client: '消费电子品牌',
-      category: '视频剪辑',
+      title: '理财互动游戏视频2',
+      client: '金融机构',
+      category: '互动游戏',
       year: '2024',
-      duration: '2:15',
-      description: '制作产品宣传视频,通过精美的镜头语言和流畅的剪辑,突出产品特性和使用场景。',
+      duration: '1:30',
+      description: '',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/2d4ca9e442634d8c8427368395d89f18.mp4',
       gradient: 'from-gray-600 to-gray-800'
     },
     {
       id: 3,
-      title: '社交媒体动画',
-      client: '时尚品牌',
-      category: '动态图形',
-      year: '2023',
-      duration: '0:15',
-      description: '为社交媒体平台创作一系列短视频动画,提升品牌在社交媒体的视觉表现力。',
+      title: '理财互动游戏视频3',
+      client: '金融机构',
+      category: '互动游戏',
+      year: '2024',
+      duration: '1:30',
+      description: '',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/56afcfa57a884e99bde68e4a2c97eeb1.mp4',
       gradient: 'from-gray-500 to-gray-700'
     },
     {
       id: 4,
-      title: '音乐视频',
-      client: '独立音乐人',
-      category: '视觉特效',
-      year: '2023',
-      duration: '3:45',
-      description: '为音乐人创作音乐视频,融合实拍和动画元素,创造梦幻般的视觉体验。',
+      title: '理财互动游戏视频投教部分',
+      client: '金融机构',
+      category: '互动游戏',
+      year: '2024',
+      duration: '1:30',
+      description: '',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/eef80e4ac6e442d28cfe8859dc41d0b5.mp4',
       gradient: 'from-gray-800 to-black'
     },
     {
       id: 5,
-      title: '活动开场动画',
-      client: '科技大会',
-      category: '动态图形',
-      year: '2023',
-      duration: '1:00',
-      description: '设计科技大会的开场动画,为活动营造震撼的开幕氛围。',
+      title: '节日H5短视频',
+      client: '',
+      category: '',
+      year: '2024',
+      duration: '0:30',
+      description: '',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/50146f6c5d9b45398fcffeeeb29f2446.mp4',
       gradient: 'from-gray-600 to-gray-800'
     },
     {
       id: 6,
-      title: '信息图表动画',
-      client: '教育机构',
-      category: '动态图形',
-      year: '2022',
-      duration: '2:30',
-      description: '将复杂的数据和信息转化为生动的动画视频,让学习变得更加有趣和高效。',
+      title: '节日H5短视频',
+      client: '',
+      category: '',
+      year: '2024',
+      duration: '0:30',
+      description: '',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/ec2ca1fc974c47899d9f991853b8909f.mp4',
       gradient: 'from-gray-500 to-gray-700'
+    },
+    {
+      id: 7,
+      title: '金融投教类短视频',
+      client: '',
+      category: '',
+      year: '2024',
+      duration: '0:30',
+      description: '',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/f77d2450439042fea9a12c4e07d2a939.mp4',
+      gradient: 'from-gray-700 to-gray-900'
+    },
+    {
+      id: 8,
+      title: '早教机构宣传片',
+      client: '',
+      category: '',
+      year: '2024',
+      duration: '0:30',
+      description: '',
+      videoUrl: 'https://agent-statics-tc.nuwax.com/tmp/b4c9576191054f92a6d5833dea025335.mp4',
+      gradient: 'from-gray-600 to-gray-800'
     }
   ];
 
@@ -82,7 +113,7 @@ function Video() {
               平面设计
             </Link>
             <Link to="/video" className="text-sm font-bold">
-              视频
+              视频动画
             </Link>
             <Link to="/experience" className="text-sm hover:text-gray-600 transition-colors">
               工作经历
@@ -142,24 +173,73 @@ function Video() {
                 className="group"
               >
                 {/* 视频预览 */}
-                <Link
-                  to="#"
+                <div
                   className="relative block bg-gray-100 aspect-video overflow-hidden mb-4"
                 >
-                  <div className={`w-full h-full bg-gradient-to-br ${video.gradient} group-hover:scale-105 transition-transform duration-500 flex items-center justify-center`}>
-                    <span className="text-6xl font-bold text-white/30">{video.id.toString().padStart(2, '0')}</span>
-                  </div>
-                  {/* 播放按钮 */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                      <Play className="w-6 h-6 text-black ml-1" fill="black" />
-                    </div>
-                  </div>
+                  {video.videoUrl ? (
+                    <video
+                      ref={(el) => {
+                        if (el) {
+                          videoRefs.current[video.id] = el;
+                          // 为第一个视频设置预览时间为第60秒
+                          if (video.id === 1) {
+                            el.currentTime = 60;
+                            // 确保视频停留在第60秒作为预览
+                            el.addEventListener('loadedmetadata', () => {
+                              el.currentTime = 60;
+                            }, { once: true });
+                          }
+                          // 为第二个视频设置预览时间为第1分43秒
+                          if (video.id === 2) {
+                            el.currentTime = 103;
+                            // 确保视频停留在第1分43秒作为预览
+                            el.addEventListener('loadedmetadata', () => {
+                              el.currentTime = 103;
+                            }, { once: true });
+                          }
+                          // 为第三个视频设置预览时间为第2秒
+                          if (video.id === 3) {
+                            el.currentTime = 2;
+                            // 确保视频停留在第2秒作为预览
+                            el.addEventListener('loadedmetadata', () => {
+                              el.currentTime = 2;
+                            }, { once: true });
+                          }
+                          // 为第四个视频设置预览时间为第38秒
+                          if (video.id === 4) {
+                            el.currentTime = 38;
+                            // 确保视频停留在第38秒作为预览
+                            el.addEventListener('loadedmetadata', () => {
+                              el.currentTime = 38;
+                            }, { once: true });
+                          }
+                        }
+                      }}
+                      src={video.videoUrl}
+                      className="w-full h-full object-cover"
+                      controls
+                      preload="metadata"
+                    />
+                  ) : (
+                    <>
+                      <div className={`w-full h-full bg-gradient-to-br ${video.gradient} group-hover:scale-105 transition-transform duration-500 flex items-center justify-center`}>
+                        <span className="text-6xl font-bold text-white/30">{video.id.toString().padStart(2, '0')}</span>
+                      </div>
+                      {/* 播放按钮 */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                          <Play className="w-6 h-6 text-black ml-1" fill="black" />
+                        </div>
+                      </div>
+                    </>
+                  )}
                   {/* 时长 */}
-                  <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/80 text-white text-xs">
-                    {video.duration}
-                  </div>
-                </Link>
+                  {!video.videoUrl && (
+                    <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/80 text-white text-xs">
+                      {video.duration}
+                    </div>
+                  )}
+                </div>
 
                 {/* 视频信息 */}
                 <div className="space-y-2">
@@ -171,9 +251,11 @@ function Video() {
                   </div>
                   <p className="text-gray-600">{video.client}</p>
                   <p className="text-sm text-gray-500">{video.category}</p>
-                  <p className="text-gray-700 mt-3 line-clamp-2">
-                    {video.description}
-                  </p>
+                  {video.description && (
+                    <p className="text-gray-700 mt-3 line-clamp-2">
+                      {video.description}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
@@ -212,9 +294,9 @@ function Video() {
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-3">视觉特效</h3>
+                <h3 className="text-xl font-bold mb-3">AI视频</h3>
                 <p className="text-gray-400">
-                  特效合成 / 调色 / 三维动画 / 音乐视频
+                  AI视频/AI动画/AI动效
                 </p>
               </div>
             </div>
@@ -224,7 +306,7 @@ function Video() {
           <div className="mt-16 border-t border-black/10 pt-12">
             <h2 className="text-2xl font-bold mb-6">使用的工具</h2>
             <div className="flex flex-wrap gap-4">
-              {['Adobe After Effects', 'Adobe Premiere Pro', 'Cinema 4D', 'DaVinci Resolve', 'Final Cut Pro'].map((tool) => (
+              {['Adobe After Effects', 'Adobe Premiere Pro', '剪映', 'Sora', 'oiioii'].map((tool) => (
                 <span
                   key={tool}
                   className="px-6 py-3 bg-gray-100 text-sm"

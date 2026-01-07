@@ -11,7 +11,7 @@ function Experience() {
       id: 1,
       company: '上海壮诚体育器材有限公司',
       position: '设计',
-      period: '2024.10 - 至今',
+      period: '2024.10 - 2025.12',
       description: '负责日常视觉设计工作。',
       achievements: [
         '日常视觉设计：海报、长图文、PPT设计,画册、宣传单、展会物料等',
@@ -26,11 +26,10 @@ function Experience() {
       period: '2020.10 - 2024.06',
       description: '负责产品研发团队视频类需求,包括线上课程、MG动画、H5动效设计。',
       achievements: [
-        '为招行、建行、中国银行、平安人寿等客户定制的基金类保险类产品视频制作',
-        '互动游戏类投教视频,已上线建行、招行客户端十余支,使客户获客大量提升',
-        '动画素材库0-1搭建,服务几十家客户上万名销售',
-        '金融投教系列课程超过10类,上线300余期课程',
-        '负责绘制素材、动效设计及输出文件给开发团队,跟踪产品落地效果'
+        '为招行、建行、中国银行、平安人寿等客户定制的基金类保险类产品视频制作。\n  负责绘制素材、动效设计及输出文件给开发团队，跟踪产品落地效果。',
+        '互动游戏类投教视频，已上线建行、招行客户端十余支，使客户获客大量提升。\n  参与游戏策划及文案编写，绘制分镜及素材，制作动画。',
+        '动画素材库0-1搭建，服务几十家客户上万名销售，使其能自行制作产品演示动画，提升曝光，获客。\n  负责搭建素材库，绘制元素及场景，转场等，制作Lottie动效并输出给开发团队。\n  和开发团队共同解决bug，不断迭代，提升客户使用体验。',
+        '金融投教系列课程超过10类，上线300余期课程。\n  负责前期脚本设计、风格设计，绘制素材、制作动画及模板。'
       ]
     },
     {
@@ -73,7 +72,7 @@ function Experience() {
               平面设计
             </Link>
             <Link to="/video" className="text-sm hover:text-gray-600 transition-colors">
-              视频
+              视频动画
             </Link>
             <Link to="/experience" className="text-sm font-bold">
               工作经历
@@ -125,7 +124,7 @@ function Experience() {
                     <span className="text-gray-500">|</span>
                     <div className="flex items-center gap-2 text-gray-600">
                       <Building size={18} />
-                      <span>{exp.company}</span>
+                      <span className="font-bold">{exp.company}</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-gray-500 mb-4">
@@ -143,13 +142,36 @@ function Experience() {
                   <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider">
                     主要成就
                   </h3>
-                  <ul className="space-y-2">
-                    {exp.achievements.map((achievement, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-gray-700">
-                        <span className="w-1.5 h-1.5 bg-black rounded-full mt-2 flex-shrink-0" />
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
+                  <ul className="space-y-4">
+                    {exp.achievements.map((achievement, idx) => {
+                      // 将成就内容按换行符分割,第一行是主要成就,后面是详细说明
+                      const lines = achievement.split('\n').map(line => line.trim()).filter(line => line);
+                      const mainAchievement = lines[0];
+                      const details = lines.slice(1);
+
+                      return (
+                        <li key={idx} className="text-gray-700">
+                          <div className="flex items-start gap-3">
+                            <span className="w-1.5 h-1.5 bg-black rounded-full mt-2 flex-shrink-0" />
+                            <div className="flex-1">
+                              {/* 主要成就 - 不加粗 */}
+                              <p className="text-base mb-1">{mainAchievement}</p>
+                              {/* 详细说明 - 缩进显示,颜色较浅 */}
+                              {details.length > 0 && (
+                                <ul className="space-y-1 ml-4">
+                                  {details.map((detail, detailIdx) => (
+                                    <li key={detailIdx} className="text-sm text-gray-600 flex items-start gap-2">
+                                      <span className="text-gray-400 mt-1">-</span>
+                                      <span>{detail}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </div>
