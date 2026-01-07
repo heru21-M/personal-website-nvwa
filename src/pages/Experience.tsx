@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Mail, Instagram, Linkedin, Calendar, Building } from 'lucide-react';
+import { ArrowLeft, Calendar, Building } from 'lucide-react';
 
 /**
  * 工作经历页面
@@ -110,7 +110,7 @@ function Experience() {
 
           {/* 时间线 */}
           <div className="space-y-12">
-            {experiences.map((exp, index) => (
+            {experiences.map((exp) => (
               <div
                 key={exp.id}
                 className="relative pl-8 md:pl-12 border-l-2 border-black/20 pb-12 last:pb-0"

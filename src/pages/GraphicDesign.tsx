@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Mail, Instagram, Linkedin, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Mail } from 'lucide-react';
 import ipNewImage from '@/assets/ip-new.png';
 import ipNew2Image from '@/assets/ip-new2.png';
 import financeVideoImage from '@/assets/finance-video.png';

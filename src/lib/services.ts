@@ -74,8 +74,9 @@ export interface StreamResponse<T = any> {
 export async function streamRequest<T>(
   url: string,
   data: any,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onData: (response: StreamResponse<T>) => void,
-  onError?: (error: Error) => void
+  onError?: () => void
 ) {
   try {
     await fetchEventSource(url, {

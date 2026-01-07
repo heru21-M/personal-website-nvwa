@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Mail, Instagram, Linkedin, Play } from 'lucide-react';
-import { useRef, useEffect } from 'react';
+import { ArrowLeft, Mail, Play } from 'lucide-react';
+import { useRef } from 'react';
 
 /**
  * 视频作品展示页面
