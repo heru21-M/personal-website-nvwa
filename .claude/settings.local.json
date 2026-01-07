@@ -10,7 +10,8 @@
       "Bash(git remote add:*)",
       "Bash(git push:*)",
       "Bash(git remote remove:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(pnpm run build:*)"
     ],
     "deny": [],
     "ask": []
