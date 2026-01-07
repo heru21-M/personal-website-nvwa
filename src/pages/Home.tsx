@@ -3,10 +3,8 @@ import { Play } from 'lucide-react';
 import heroImage from '@/assets/hero-image.png';
 import ipNewImage from '@/assets/ip-new.png';
 import ipNew2Image from '@/assets/ip-new2.png';
-import financeVideoImage from '@/assets/finance-video.png';
-import solarTermsImage from '@/assets/solar-terms.png';
-import ipDesignImage from '@/assets/ip-design.png';
-import ipExtensionImage from '@/assets/ip-extension.png';
+import uiDesign1Image from '@/assets/ui-design-1.png';
+import uiDesign2Image from '@/assets/ui-design-2.png';
 
 /**
  * 首页组件
@@ -37,21 +35,21 @@ function Home() {
       gradient: ''
     },
     {
-      id: 3,
-      title: '理财视频设计稿',
-      client: '金融机构',
-      category: '视频设计',
+      id: 13,
+      title: 'UI设计',
+      client: '应用界面',
+      category: 'UI设计',
       year: '2024',
-      image: financeVideoImage,
+      image: uiDesign1Image,
       gradient: ''
     },
     {
-      id: 4,
-      title: '二十四节气动态设计稿',
-      client: '原创设计',
-      category: '动态设计',
+      id: 14,
+      title: 'UI设计',
+      client: '应用界面',
+      category: 'UI设计',
       year: '2024',
-      image: solarTermsImage,
+      image: uiDesign2Image,
       gradient: ''
     }
   ];
@@ -110,7 +108,7 @@ function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-black/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold tracking-tight">
-            作品集
+            臧秀娟的设计站
           </Link>
           <div className="hidden md:flex items-center gap-8 ml-auto">
             <a href="#graphic-design" className="text-sm hover:text-gray-600 transition-colors">

@@ -6,6 +6,12 @@ import financeVideoImage from '@/assets/finance-video.png';
 import solarTermsImage from '@/assets/solar-terms.png';
 import eventPosterImage from '@/assets/event-poster.png';
 import golfClubProductImage from '@/assets/golf-club-product.png';
+import financeVideoStoryboardImage from '@/assets/finance-video-storyboard.jpg';
+import financeVideoStoryboard2Image from '@/assets/finance-video-storyboard-2.jpg';
+import uiDesign1Image from '@/assets/ui-design-1.png';
+import uiDesign2Image from '@/assets/ui-design-2.png';
+import pptDesignImage from '@/assets/ppt-design.png';
+import pptProcessImage from '@/assets/ppt-process.png';
 
 /**
  * 平面设计作品展示页面
@@ -34,6 +40,26 @@ function GraphicDesign() {
       gradient: ''
     },
     {
+      id: 13,
+      title: 'UI设计',
+      client: '应用界面',
+      category: 'UI设计',
+      year: '2024',
+      description: '移动应用界面设计，注重用户体验和视觉层次的平衡。',
+      image: uiDesign1Image,
+      gradient: ''
+    },
+    {
+      id: 14,
+      title: 'UI设计',
+      client: '应用界面',
+      category: 'UI设计',
+      year: '2024',
+      description: '移动应用界面设计，注重用户体验和视觉层次的平衡。',
+      image: uiDesign2Image,
+      gradient: ''
+    },
+    {
       id: 3,
       title: '理财视频设计稿',
       client: '金融机构',
@@ -51,6 +77,26 @@ function GraphicDesign() {
       year: '2024',
       description: '结合传统文化元素与现代动态设计，展现二十四节气的独特魅力。',
       image: solarTermsImage,
+      gradient: ''
+    },
+    {
+      id: 7,
+      title: '理财视频分镜稿',
+      client: '金融机构',
+      category: '视频设计',
+      year: '2024',
+      description: '为金融机构设计的理财视频分镜稿，包含详细的镜头设计和内容规划。',
+      image: financeVideoStoryboardImage,
+      gradient: ''
+    },
+    {
+      id: 8,
+      title: '理财视频分镜稿',
+      client: '金融机构',
+      category: '视频设计',
+      year: '2024',
+      description: '为金融机构设计的理财视频分镜稿，包含详细的镜头设计和内容规划。',
+      image: financeVideoStoryboard2Image,
       gradient: ''
     },
     {
@@ -74,40 +120,24 @@ function GraphicDesign() {
       gradient: ''
     },
     {
-      id: 7,
-      title: '品牌标识设计',
-      client: '科技公司',
+      id: 15,
+      title: 'PPT',
+      client: '品牌客户',
       category: '品牌设计',
       year: '2024',
-      description: '为科技公司打造的现代品牌标识，简洁有力的视觉传达，体现科技与创新。',
-      gradient: 'from-gray-200 to-gray-400'
+      description: '课程设计PPT',
+      image: pptDesignImage,
+      gradient: ''
     },
     {
-      id: 8,
-      title: '宣传册设计',
-      client: '教育机构',
-      category: '编辑设计',
+      id: 16,
+      title: 'PPT',
+      client: '企业平台流程化',
+      category: '演示设计',
       year: '2024',
-      description: '教育机构宣传册设计，信息层级清晰，视觉风格统一专业。',
-      gradient: 'from-gray-300 to-gray-500'
-    },
-    {
-      id: 9,
-      title: '活动主视觉',
-      client: '商业活动',
-      category: '平面设计',
-      year: '2024',
-      description: '商业活动主视觉设计，营造热烈氛围，提升品牌影响力。',
-      gradient: 'from-gray-400 to-gray-600'
-    },
-    {
-      id: 10,
-      title: '包装视觉设计',
-      client: '消费品牌',
-      category: '包装设计',
-      year: '2024',
-      description: '消费品牌包装视觉设计，突出产品特色，增强货架吸引力。',
-      gradient: 'from-gray-500 to-gray-700'
+      description: '企业平台流程化',
+      image: pptProcessImage,
+      gradient: ''
     }
   ];
 
@@ -117,20 +147,20 @@ function GraphicDesign() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-black/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold tracking-tight">
-            作品集
+            臧秀娟的设计站
           </Link>
           <div className="hidden md:flex items-center gap-8 ml-auto">
-            <Link to="/about" className="text-sm hover:text-gray-600 transition-colors">
-              关于我
-            </Link>
-            <Link to="/experience" className="text-sm hover:text-gray-600 transition-colors">
-              工作经历
-            </Link>
             <Link to="/graphic-design" className="text-sm font-bold">
               平面设计
             </Link>
             <Link to="/video" className="text-sm hover:text-gray-600 transition-colors">
               视频
+            </Link>
+            <Link to="/experience" className="text-sm hover:text-gray-600 transition-colors">
+              工作经历
+            </Link>
+            <Link to="/about" className="text-sm hover:text-gray-600 transition-colors">
+              关于我
             </Link>
           </div>
         </div>
@@ -156,27 +186,8 @@ function GraphicDesign() {
               平面设计
             </h1>
             <p className="text-2xl md:text-3xl text-gray-600">
-              品牌识别 / 视觉设计 / 插画创作
+              UI界面 / 视觉设计 / 日常物料
             </p>
-          </div>
-
-          {/* 分类筛选 */}
-          <div className="mb-12 flex flex-wrap gap-4">
-            <button className="px-6 py-2 bg-black text-white text-sm">
-              全部
-            </button>
-            <button className="px-6 py-2 border border-black/20 text-sm hover:bg-black hover:text-white transition-colors">
-              品牌设计
-            </button>
-            <button className="px-6 py-2 border border-black/20 text-sm hover:bg-black hover:text-white transition-colors">
-              包装设计
-            </button>
-            <button className="px-6 py-2 border border-black/20 text-sm hover:bg-black hover:text-white transition-colors">
-              编辑设计
-            </button>
-            <button className="px-6 py-2 border border-black/20 text-sm hover:bg-black hover:text-white transition-colors">
-              插画
-            </button>
           </div>
 
           {/* 作品网格 */}
@@ -243,19 +254,19 @@ function GraphicDesign() {
               <div>
                 <h3 className="text-xl font-bold mb-3">品牌设计</h3>
                 <p className="text-gray-400">
-                  Logo设计 / 品牌识别系统 / 视觉指南 / 品牌策略
+                  logo设计/VI视觉识别系统
                 </p>
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-3">视觉设计</h3>
                 <p className="text-gray-400">
-                  平面设计 / 插画创作 / 包装设计 / 印刷设计
+                  平面设计/UI设计/海报设计
                 </p>
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-3">编辑设计</h3>
                 <p className="text-gray-400">
-                  杂志设计 / 书籍设计 / 年报设计 / 海报设计
+                  画册设计/详情页设计/物料设计
                 </p>
               </div>
             </div>

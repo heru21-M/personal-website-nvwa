@@ -66,20 +66,20 @@ function Experience() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-black/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold tracking-tight">
-            作品集
+            臧秀娟的设计站
           </Link>
           <div className="hidden md:flex items-center gap-8 ml-auto">
-            <Link to="/about" className="text-sm hover:text-gray-600 transition-colors">
-              关于我
-            </Link>
-            <Link to="/experience" className="text-sm font-bold">
-              工作经历
-            </Link>
             <Link to="/graphic-design" className="text-sm hover:text-gray-600 transition-colors">
               平面设计
             </Link>
             <Link to="/video" className="text-sm hover:text-gray-600 transition-colors">
               视频
+            </Link>
+            <Link to="/experience" className="text-sm font-bold">
+              工作经历
+            </Link>
+            <Link to="/about" className="text-sm hover:text-gray-600 transition-colors">
+              关于我
             </Link>
           </div>
         </div>
